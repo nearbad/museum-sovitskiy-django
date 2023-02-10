@@ -1,0 +1,104 @@
+{% extends 'layout/basic.html' %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="mx-4">
+    <div class="row rounded">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="#">
+                        <img src="{% static 'main/images/1.jpg' %}" class="d-block w-100" alt="...">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img src="{% static 'main/images/2.jpg' %}" class="d-block w-100" alt="...">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img src="{% static 'main/images/3.jpg' %}" class="d-block w-100" alt="...">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img src="{% static 'main/images/4.jpg' %}" class="d-block w-100" alt="...">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img src="{% static 'main/images/5.jpg' %}" class="d-block w-100" alt="...">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#"><img src="{% static 'main/images/6.jpg' %}" class="d-block w-100" alt="...">
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% static 'main/images/7.jpg' %}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">Нукусский музей создан в 1966 году по инициативе художника и коллекционера
+                        Игоря Витальевича Савицкого, во взаимодействии с поддержавшими его деятельность представителями
+                        руководящих органов Каракалпакской АССР: обкома КП, Совета министров и Академии...</p>
+                    <p class="card-text"><small class="text-muted"><a href="#">Читать далее >></a></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% static 'main/images/8.jpg' %}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">Общественный открытый каталог Нукусского музея представляет собой виртуальную
+                        базу данных, в которой фигурируют все известные нам и публиковавшиеся произведения из коллекции
+                        И.В. Савицкого. Содержание каталога структурировано по художникам, арт-группировкам,
+                        институциям, учебным заведениям, ключевым словам и пр., что позволяет быстро осуществлять
+                        навигационный поиск.</p>
+                    <p class="card-text"><small class="text-muted"><a href="#">Перейти к списку художников >></a>
+                    </small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% static 'main/images/9.jpg' %}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">История формирования коллекции началась до официального основания Нукусского
+                        музея. Еще в конце 1950-х – начале 1960-х гг. Игорь Савицкий занимался коллекционированием
+                        предметов каракалпакского народно-прикладного искусства в Каракалпакском филиале АН Узбекистана.
+                        Им также был сформирован археологический отряд, который занимался сбором предметов искусства
+                        древнего Хорезма. Таким образом, первоначальным ядром музейной коллекции стало древнее и
+                        народное искусство приаральского региона, на территории которого сегодня находится
+                        Каракалпакстан. </p>
+                    <p class="card-text"><small class="text-muted"><a href="#">Читать далее >></a></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
