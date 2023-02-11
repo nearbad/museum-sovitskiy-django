@@ -37,13 +37,15 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Нукусский музей</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main:nks_museum' %}">Нукусский
+                                музей</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Коллекция</a>
+                            <a class="nav-link active" aria-current="page"
+                               href="{% url 'main:collections' %}">Коллекция</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Источники</a>
+                            <a class="nav-link" href="{% url 'main:sources' %}">Источники</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -51,6 +53,10 @@
                                 Каталог
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'main:catalogue' %}">О каталоге</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="#">Художники</a></li>
                                 <li><a class="dropdown-item" href="#">Группировки</a></li>
                                 <li>
@@ -60,10 +66,10 @@
                                 <li><a class="dropdown-item" href="#">Институция</a></li>
                             </ul>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Кредиты</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main:credits' %}">Кредиты</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Авторские права</a>
+                            <a class="nav-link" href="{% url 'main:copyright' %}">Авторские права</a>
                         </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">

@@ -4,12 +4,34 @@
 {% load static %}
 
 {% block content %}
+<div class="row">
+    <div class="col-md-9">
+        <ul class="nav nav-fill m-3">
+            <li class="nav-item">
+                <a class="nav-link link-info" aria-current="page" href="#">Художники</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-info" href="#">Группировки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-info" href="{% url 'main:contact' %}">Контакты</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-3 my-3">
+        <form class="d-flex justify-content-center" role="search" style="width: 80%">
+            <input class="form-control me-1" type="search" placeholder="Поиск" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Поиск</button>
+        </form>
+    </div>
+</div>
+
 <div class="mx-4">
     <div class="row rounded">
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="#">
+                    <a href="{% url 'main:nks_museum' %}">
                         <img src="{% static 'main/images/1.jpg' %}" class="d-block w-100" alt="...">
                     </a>
                 </div>
@@ -58,7 +80,7 @@
                     <p class="card-text">Нукусский музей создан в 1966 году по инициативе художника и коллекционера
                         Игоря Витальевича Савицкого, во взаимодействии с поддержавшими его деятельность представителями
                         руководящих органов Каракалпакской АССР: обкома КП, Совета министров и Академии...</p>
-                    <p class="card-text"><small class="text-muted"><a href="#">Читать далее >></a></small></p>
+                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:nks_museum' %}">Читать далее >></a></small></p>
                 </div>
             </div>
         </div>
@@ -95,7 +117,7 @@
                         древнего Хорезма. Таким образом, первоначальным ядром музейной коллекции стало древнее и
                         народное искусство приаральского региона, на территории которого сегодня находится
                         Каракалпакстан. </p>
-                    <p class="card-text"><small class="text-muted"><a href="#">Читать далее >></a></small></p>
+                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:collections' %}">Читать далее >></a></small></p>
                 </div>
             </div>
         </div>
