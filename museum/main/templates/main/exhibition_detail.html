@@ -1,0 +1,25 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}
+<title>{{ exhib.name }}</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mx-5 my-3">
+    <div class="row mx-5">
+        <h5 class="display-5">{{ exhib.name }}</h5>
+        <div class="row">{{ exhib.about|linebreaks }}</div>
+    </div>
+    <div class="row mx-5">
+        {% for p in photo %}
+        <div class="col-4">
+            <a class="thumbnail fancybox" target="_blank" title="Алексей Бабичев. Женский портрет" rel="ligthbox"
+               href="{{ p.photo.url }}">
+                <img src="{{ p.photo.url }}" class="img-fluid">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

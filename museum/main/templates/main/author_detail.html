@@ -1,0 +1,47 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ author.name }}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/author_detail.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mx-5 my-3">
+    <div class="row">
+        <h5 class="display-5">{{ author.name }}</h5>
+        <p>Даты жизни: <strong>{{ author.years_of_life }}</strong></p>
+        {% if author.association.name %}
+        <p>Группировка: <a href="#" class="link-warning">{{ author.association.name }}</a></p>
+        {% endif %}
+        {% if author.education.all %}
+        <p class="fs-6"> Образование:
+            {% for ed in author.education.all %}
+            <a href="#" class="link-warning text-decoration-none">{{ ed.name }};</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+        {% if author.institution.name %}
+        <p>Институция: <a href="#" class="link-warning">{{ author.institution.name }}</a></p>
+        {% endif %}
+        <h6>Биография</h6>
+        <div class="row">{{ author.bio|linebreaks }}</div>
+        {% for p in photo %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="hovereffect">
+                <img class="img-fluid img-thumbnail img-responsive" src="{{ p.photo.url }}"
+                     alt="{{ p.exibition.name }}">
+                <div class="overlay">
+                    <h2>{{ p.exhibition.name }}</h2>
+                    <a class="info" href="{% url 'main:exhibition_detail' p.exhibition.pk %}">
+                        Перейти к произведению
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

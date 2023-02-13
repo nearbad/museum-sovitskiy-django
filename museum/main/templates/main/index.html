@@ -8,10 +8,10 @@
     <div class="col-md-9">
         <ul class="nav nav-fill m-3">
             <li class="nav-item">
-                <a class="nav-link link-info" aria-current="page" href="#">Художники</a>
+                <a class="nav-link link-info" aria-current="page" href="{% url 'main:author_list' %}">Художники</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link link-info" href="#">Группировки</a>
+                <a class="nav-link link-info" href="{% url 'main:association_list' %}">Группировки</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-info" href="{% url 'main:contact' %}">Контакты</a>
@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="#">
+                    <a href="{% url 'main:author_list' %}">
                         <img src="{% static 'main/images/2.jpg' %}" class="d-block w-100" alt="...">
                     </a>
                 </div>
@@ -97,7 +97,7 @@
                         И.В. Савицкого. Содержание каталога структурировано по художникам, арт-группировкам,
                         институциям, учебным заведениям, ключевым словам и пр., что позволяет быстро осуществлять
                         навигационный поиск.</p>
-                    <p class="card-text"><small class="text-muted"><a href="#">Перейти к списку художников >></a>
+                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:author_list' %}">Перейти к списку художников >></a>
                     </small></p>
                 </div>
             </div>

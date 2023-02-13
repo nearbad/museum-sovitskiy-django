@@ -4,10 +4,10 @@ from .models import *
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'years_of_life', 'exhibition')
+    list_display = ('id', 'name', 'years_of_life',)
     list_display_links = ('id', 'name')
-    search_fields = ('name', 'exhibition')
-    list_filter = ('name', 'exhibition')
+    search_fields = ('name',)
+    list_filter = ('name',)
     list_per_page = 13
     # save_on_top = True
 
