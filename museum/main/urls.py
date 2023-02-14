@@ -16,6 +16,11 @@ urlpatterns = [
     path('association/', AssociationList.as_view(), name='association_list'),
     path('education/', EducationList.as_view(), name='education_list'),
     path('institution/', InstitutionList.as_view(), name='institution_list'),
-    path('author/<int:pk>', author_detail, name='author_detail'),
-    path('exhibit/<int:pk>', exhibition_detail, name='exhibition_detail'),
+    path('author/<int:pk>/', author_detail, name='author_detail'),
+    path('exhibit/<int:pk>/', exhibition_detail, name='exhibition_detail'),
+    path('association/<int:pk>/', AssociationDetail.as_view(), name='association_detail'),
+    path('education/<int:pk>/', EducationDetail.as_view(), name='education_detail'),
+    path('institution/<int:pk>/', InstitutionDetail.as_view(), name='institution_detail'),
+    path('search/', SearchView.as_view(), name='search'),
+    path('set_theme/', set_theme, name='set_theme'),
 ]

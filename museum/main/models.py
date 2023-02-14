@@ -5,9 +5,9 @@ class Author(models.Model):
     name = models.CharField(max_length=255, db_index=True, verbose_name='Имя художника')
     years_of_life = models.CharField(max_length=255, blank=True, verbose_name='Даты жизни')
     bio = models.TextField(blank=True, verbose_name='Биография')
-    association = models.ForeignKey('Association', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Группировка')
-    education = models.ManyToManyField('Education', null=True, blank=True, verbose_name='Образование')
-    institution = models.ForeignKey('Institution', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Институция')
+    association = models.ManyToManyField('Association', blank=True, verbose_name='Группировка')
+    education = models.ManyToManyField('Education', blank=True, verbose_name='Образование')
+    institution = models.ManyToManyField('Institution', blank=True, verbose_name='Институция')
 
     def __str__(self):
         return self.name
@@ -60,7 +60,7 @@ class Institution(models.Model):
 class Exhibition(models.Model):
     name = models.CharField(max_length=255, db_index=True, verbose_name='Произведение')
     about = models.TextField(verbose_name='О произведении')
-    author = models.ForeignKey('Author', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Автор')
+    author = models.ForeignKey('Author', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Автор', related_name='exhibitions')
 
     def __str__(self):
         return self.name
@@ -73,7 +73,7 @@ class Exhibition(models.Model):
 
 class ExhibitionPhoto(models.Model):
     photo = models.ImageField(upload_to="photos/%Y/%m/%d")
-    exhibition = models.ForeignKey('Exhibition', on_delete=models.CASCADE, verbose_name='Произведение')
+    exhibition = models.ForeignKey('Exhibition', on_delete=models.CASCADE, verbose_name='Произведение', related_name='photos')
 
     def __str__(self):
         return self.exhibition.name

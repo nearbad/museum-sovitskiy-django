@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>{{ author.name }}</title>
+<title>СавицкийМузей - {{ author.name }}</title>
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/author_detail.css' %}">
 {% endblock %}
 
@@ -11,37 +11,52 @@
 
 <div class="container mx-5 my-3">
     <div class="row">
-        <h5 class="display-5">{{ author.name }}</h5>
-        <p>Даты жизни: <strong>{{ author.years_of_life }}</strong></p>
-        {% if author.association.name %}
-        <p>Группировка: <a href="#" class="link-warning">{{ author.association.name }}</a></p>
-        {% endif %}
-        {% if author.education.all %}
-        <p class="fs-6"> Образование:
-            {% for ed in author.education.all %}
-            <a href="#" class="link-warning text-decoration-none">{{ ed.name }};</a>
-            {% endfor %}
-        </p>
-        {% endif %}
-        {% if author.institution.name %}
-        <p>Институция: <a href="#" class="link-warning">{{ author.institution.name }}</a></p>
-        {% endif %}
-        <h6>Биография</h6>
-        <div class="row">{{ author.bio|linebreaks }}</div>
-        {% for p in photo %}
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="hovereffect">
-                <img class="img-fluid img-thumbnail img-responsive" src="{{ p.photo.url }}"
-                     alt="{{ p.exibition.name }}">
-                <div class="overlay">
-                    <h2>{{ p.exhibition.name }}</h2>
-                    <a class="info" href="{% url 'main:exhibition_detail' p.exhibition.pk %}">
-                        Перейти к произведению
-                    </a>
+        <div class="col-lg-12 col-10">
+            <h5 class="display-5">{{ author.name }}</h5>
+            <p>Даты жизни: <strong>{{ author.years_of_life }}</strong></p>
+            {% if author.association.all %}
+            <p>Группировка:
+                {% for as in author.association.all %}
+                <a href="{% url 'main:association_detail' as.pk %}" class="link-warning text-decoration-none">
+                    {{ as.name }}; </a>
+                {% endfor %}
+            </p>
+            {% endif %}
+            {% if author.education.all %}
+            <p class="fs-6"> Образование:
+                {% for ed in author.education.all %}
+                <a href="{% url 'main:education_detail' ed.pk %}" class="link-warning text-decoration-none">
+                    {{ ed.name }}; </a>
+                {% endfor %}
+            </p>
+            {% endif %}
+            {% if author.institution.all %}
+            <p>Институция:
+                {% for ins in author.institution.all %}
+                <a href="{% url 'main:institution_detail' ins.pk %}" class="link-warning text-decoration-none">
+                    {{ ins.name }}; </a>
+                {% endfor %}
+            </p>
+            {% endif %}
+            <h6>Биография</h6>
+            <div class="row">{{ author.bio|linebreaks }}</div>
+            <div class="row">
+                {% for ex in exhibitions %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-10">
+                    <div class="hovereffect">
+                        <img class="img-fluid img-thumbnail img-responsive" src="{{ ex.photos.first.photo.url }}"
+                             alt="{{ ex.name }}">
+                        <div class="overlay">
+                            <h2>{{ ex.name }}</h2>
+                            <a class="info" href="{% url 'main:exhibition_detail' ex.pk %}">
+                                Перейти к произведению
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

@@ -13,13 +13,13 @@
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
     {% block title %}
-    <title>Document</title>
+    <title>СавицкийМузей</title>
     {% endblock %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="shortcut icon" type="image/png" href="{% static 'main/images/favicon.ico' %}"/>
-</head>
 
-<body class="d-flex flex-column h-100">
+</head>
+<body class="d-flex flex-column h-100" data-bs-theme="{% if request.COOKIES.theme == 'dark' %}dark{% endif %}">
 <header>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -27,12 +27,18 @@
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand text-end" href="{% url 'main:index' %}">Общественный каталог музея имени
-                И.В.Савицкого</a>
+            {% if not request.COOKIES.theme == 'dark' %}
+            <a class="link-dark" href="{% url 'main:set_theme' %}?theme=dark&{{ request.GET.urlencode }}&cb={{ request.META.HTTP_HOST }}/{{ request.path }}"><i
+                    class="bi bi-moon"></i></a>
+            {% else %}
+            <a class="link-light" href="{% url 'main:set_theme' %}?theme=light&{{ request.GET.urlencode }}&cb={{ request.META.HTTP_HOST }}/{{ request.path }}"><i
+                    class="bi bi-sun"></i></a>
+            {% endif %}
+            <a class="navbar-brand text-end fw-light" href="{% url 'main:index' %}"><i class="bi bi-bank me-2"></i>СавицкийМузей</a>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                  aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Общественный каталог музея имени
+                    <h5 class="offcanvas-title fw-normal" id="offcanvasNavbarLabel">Общественный каталог музея имени
                         И.В.Савицкого</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
@@ -60,12 +66,14 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'main:author_list' %}">Художники</a></li>
-                                <li><a class="dropdown-item" href="{% url 'main:association_list' %}">Группировки</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:association_list' %}">Группировки</a>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'main:education_list' %}">Образование</a></li>
-                                <li><a class="dropdown-item" href="{% url 'main:institution_list' %}">Институция</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:institution_list' %}">Институция</a>
+                                </li>
                             </ul>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'main:credits' %}">Кредиты</a>
@@ -74,8 +82,8 @@
                             <a class="nav-link" href="{% url 'main:copyright' %}">Авторские права</a>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
+                    <form class="d-flex mt-3" role="search" action="{% url 'main:search' %}" method="get">
+                        <input name='q' class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Поиск</button>
                     </form>
                 </div>
@@ -96,5 +104,4 @@
     </div>
 </footer>
 </body>
-
 </html>

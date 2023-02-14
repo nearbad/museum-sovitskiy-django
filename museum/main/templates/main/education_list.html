@@ -1,5 +1,9 @@
 {% extends 'layout/basic.html' %}
 
+{% block title %}
+<title>СавицкийМузей - Список образовательных учреждений</title>
+{% endblock %}
+
 {% block content %}
 <h4 class="display-5 mt-4 text-center">СПИСОК ОБРАЗОВАТЕЛЬНЫХ УЧРЕЖДЕНИЙ</h4>
 <div class="container my-4">
@@ -7,8 +11,8 @@
         <ul style="list-style: none">
             {% for ed in education %}
             <li class="my-2"><a class="text-decoration-none link-warning"
-                                href="#">{{ ed.name }}</a>
-                {{ ed.content|truncatechars:60 }}
+                                href="{% url 'main:education_detail' ed.pk %}">{{ ed.name }}</a>
+                <p class="text-muted">{{ ed.content|truncatechars:60 }}</p>
             </li>
             {% endfor %}
         </ul>

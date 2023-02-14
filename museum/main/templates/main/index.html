@@ -1,33 +1,35 @@
 {% extends 'layout/basic.html' %}
-
-{% load bootstrap4 %}
 {% load static %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-9">
-        <ul class="nav nav-fill m-3">
-            <li class="nav-item">
-                <a class="nav-link link-info" aria-current="page" href="{% url 'main:author_list' %}">Художники</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-info" href="{% url 'main:association_list' %}">Группировки</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-info" href="{% url 'main:contact' %}">Контакты</a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-3 my-3">
-        <form class="d-flex justify-content-center" role="search" style="width: 80%">
-            <input class="form-control me-1" type="search" placeholder="Поиск" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Поиск</button>
-        </form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-9">
+            <ul class="nav nav-fill my-3">
+                <li class="nav-item">
+                    <a class="nav-link link-info" aria-current="page" href="{% url 'main:author_list' %}">Художники</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-info" href="{% url 'main:association_list' %}">Группировки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-info" href="{% url 'main:contact' %}">Контакты</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-4 my-3 d-none d-lg-block d-xl-block">
+            <form class="d-flex" role="search"
+                  action="{% url 'main:search' %}"
+                  method="get">
+                <input name='q' class="form-control me-1" type="search" placeholder="Поиск" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+            </form>
+        </div>
     </div>
 </div>
 
 <div class="mx-4">
-    <div class="row rounded">
+    <div class="row rounded d-none d-md-block d-lg-block d-xl-block">
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -46,12 +48,12 @@
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="#">
+                    <a href="{% url 'main:author_detail' 5 %}">
                         <img src="{% static 'main/images/4.jpg' %}" class="d-block w-100" alt="...">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="#">
+                    <a href="{% url 'main:author_detail' 6 %}">
                         <img src="{% static 'main/images/5.jpg' %}" class="d-block w-100" alt="...">
                     </a>
                 </div>
@@ -80,7 +82,8 @@
                     <p class="card-text">Нукусский музей создан в 1966 году по инициативе художника и коллекционера
                         Игоря Витальевича Савицкого, во взаимодействии с поддержавшими его деятельность представителями
                         руководящих органов Каракалпакской АССР: обкома КП, Совета министров и Академии...</p>
-                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:nks_museum' %}">Читать далее >></a></small></p>
+                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:nks_museum' %}">Читать далее
+                        >></a></small></p>
                 </div>
             </div>
         </div>
@@ -97,7 +100,8 @@
                         И.В. Савицкого. Содержание каталога структурировано по художникам, арт-группировкам,
                         институциям, учебным заведениям, ключевым словам и пр., что позволяет быстро осуществлять
                         навигационный поиск.</p>
-                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:author_list' %}">Перейти к списку художников >></a>
+                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:author_list' %}">Перейти к
+                        списку художников >></a>
                     </small></p>
                 </div>
             </div>
@@ -117,7 +121,8 @@
                         древнего Хорезма. Таким образом, первоначальным ядром музейной коллекции стало древнее и
                         народное искусство приаральского региона, на территории которого сегодня находится
                         Каракалпакстан. </p>
-                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:collections' %}">Читать далее >></a></small></p>
+                    <p class="card-text"><small class="text-muted"><a href="{% url 'main:collections' %}">Читать далее
+                        >></a></small></p>
                 </div>
             </div>
         </div>
